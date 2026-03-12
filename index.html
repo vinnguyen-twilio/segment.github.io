@@ -74,32 +74,51 @@
         </p>
     </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+      // 1. New Event: Track when a user starts typing recommendations
+      document.querySelector('textarea[name="details"]').addEventListener('blur', function(e) {
+          if (e.target.value.length > 0) {
+              analytics.track('Recommendation Drafted', {
+                  char_count: e.target.value.length
+              });
+          }
+      });
+
+      // 2. New Event: Track when a user clicks the Email field (Intent to identify)
+      document.querySelector('input[name="email"]').addEventListener('focus', function() {
+          analytics.track('User Reached Identification Field');
+      });
+
+      // 3. New Event: Track when the destination field is filled
+      document.querySelector('input[name="destination"]').addEventListener('change', function(e) {
+          analytics.track('Destination Selected', {
+              destination: e.target.value
+          });
+      });
+
       function identify(e){
         e.preventDefault();
         var form = e.target;
         var email = form["email"].value;
         var fullname = form["fullname"].value;
-        var vehicle = form["vehicle"].value;
+        var destination = form["destination"].value;
         var details = form["details"].value;
-
-        // 1. Identify: Link the session to a specific user profile using Email as ID
+        var user = {
+            email: email, 
+            name: fullname, 
+            destination: destination, 
+            details: details
+        };
+        
+        // Use the actual email as the ID so your agent remembers the specific user
         analytics.identify(email, {
-            name: fullname,
-            email: email,
-            vehicleModel: vehicle,
-            last_inquiry_type: "Service Request"
+            email: email, 
+            name: fullname
         });
 
-        // 2. Track: Record the specific event for your agent to respond to
-        analytics.track('Service Request Submitted', {
-            vehicle: vehicle,
-            service_notes: details,
-            submission_url: window.location.href
-        }, function() {
-            // UI Feedback
-            form.classList.add('opacity-50', 'pointer-events-none');
-            document.getElementById('successMsg').classList.remove('hidden');
+        analytics.track('destination submitted', user, function() {
+            alert("Thank you for your submission!");
+            window.location.reload(); 
         });
       }
     </script>
