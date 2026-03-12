@@ -3,99 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Auto Service | Personal Advisor Portal</title>
     
-    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
-    <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
-    <script>
-        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
-        window.amplitude.init('95a9bbd3615d3e2f9169aae58008a2d4', {"autocapture":{"elementInteractions":true}});
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0P0B29DDD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-L0P0B29DDD');
-    </script>
-
-    <title>Luxury Auto Service Portal</title>
-
     <script>
         !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";analytics.SNIPPET_VERSION="5.2.0";
         analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
         analytics.page();
-        }}();
+        }();
     </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
-    <div class="max-w-2xl mx-auto py-12 px-4">
-        <header class="mb-10 text-center">
-            <h1 class="text-3xl font-bold text-slate-800">Elite Automotive Service Advisor</h1>
-            <p class="text-slate-600 mt-2">Connect with our virtual coordinator, Alex, to manage your vehicle's maintenance.</p>
-        </header>
+<body class="bg-gray-50 font-sans leading-normal tracking-normal">
 
-        <form name="serviceRequest" onsubmit="identify(event)" class="bg-white shadow-sm border border-slate-200 rounded-lg p-8 space-y-6">
-            <div>
-                <label class="block text-sm font-semibold mb-2">Vehicle Year, Make, & Model</label>
-                <input name="vehicle" required class="w-full border border-slate-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" type="text" placeholder="e.g., 2023 Porsche 911" onblur="analytics.track('Vehicle Entered', { vehicle: this.value })"/>
-            </div>
+    <nav class="bg-white border-b border-gray-200 py-4 px-8 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-tighter text-gray-800">ELITE AUTO SERVICE</div>
+        <div class="space-x-6 text-sm font-medium text-gray-500">
+            <a href="#" class="hover:text-black">Maintenance</a>
+            <a href="#" class="hover:text-black">Repairs</a>
+            <a href="#" class="hover:text-black">Contact</a>
+        </div>
+    </nav>
 
-            <div>
-                <label class="block text-sm font-semibold mb-2">Service Details or Symptoms</label>
-                <textarea name="details" required class="w-full border border-slate-300 p-3 rounded-md h-32 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Describe what your vehicle needs..."></textarea>
-            </div>
+    <section class="max-w-4xl mx-auto pt-16 pb-12 px-4 text-center">
+        <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Meet Alex, Your Personal Service Advisor</h1>
+        <p class="text-xl text-gray-600">Provide your vehicle details below to receive a personalized maintenance plan and real-time support.</p>
+    </section>
 
+    <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 mb-16">
+        <div onclick="selectTier('Express', 185)" class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-black transition">
+            <h3 class="font-bold text-lg mb-2">Express Care</h3>
+            <p class="text-gray-500 text-sm">Synthetic oil, filter, and 21-point safety inspection.</p>
+            <div class="mt-4 font-bold text-xl">$185</div>
+        </div>
+        <div onclick="selectTier('Executive', 450)" class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-2 border-blue-500 relative transition">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-[10px] px-3 py-1 rounded-full uppercase font-bold">Recommended</span>
+            <h3 class="font-bold text-lg mb-2">Executive Plan</h3>
+            <p class="text-gray-500 text-sm">Full fluid flush, tire rotation, and cabin air filtration.</p>
+            <div class="mt-4 font-bold text-xl">$450</div>
+        </div>
+        <div onclick="selectTier('Performance', 890)" class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-black transition">
+            <h3 class="font-bold text-lg mb-2">Performance Plus</h3>
+            <h3 class="font-bold text-lg mb-2">Performance Plus</h3>
+            <p class="text-gray-500 text-sm">Brake service, spark plugs, and computer diagnostics.</p>
+            <div class="mt-4 font-bold text-xl">$890</div>
+        </div>
+    </section>
+
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-20">
+        <div class="bg-gray-900 text-white py-4 px-8 text-sm font-bold uppercase tracking-widest">Service Intake Form</div>
+        
+        <form id="serviceForm" onsubmit="handleIntake(event)" class="p-8 space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label class="block text-sm font-semibold mb-2">Full Name</label>
-                    <input name="fullname" required class="w-full border border-slate-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" type="text" placeholder="Jane Doe"/>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Vehicle Information</label>
+                    <input name="vehicle" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg outline-none focus:border-black" type="text" placeholder="e.g. 2023 Porsche 911" onblur="trackInput('Vehicle Specified')">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold mb-2">Email Address</label>
-                    <input name="email" required class="w-full border border-slate-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" type="email" placeholder="jane@example.com" onfocus="analytics.track('User Focused on Email Field')"/>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Current Mileage</label>
+                    <input name="mileage" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg outline-none focus:border-black" type="text" placeholder="e.g. 15,000" onblur="trackInput('Mileage Entered')">
                 </div>
             </div>
 
-            <button name="submit" type="submit" class="w-full bg-slate-900 text-white font-bold py-3 px-6 rounded-md hover:bg-slate-800 transition-colors">
-                Submit to Alex
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Primary Concern or Symptoms</label>
+                <textarea name="details" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg h-32 outline-none focus:border-black" placeholder="How can Alex help you today?"></textarea>
+            </div>
+
+            <div class="border-t border-gray-100 pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Client Name</label>
+                    <input name="fullname" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg outline-none focus:border-black" type="text" placeholder="Vincent Nguyen">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Secure Email</label>
+                    <input name="email" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg outline-none focus:border-black" type="email" placeholder="vincent@example.com">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1">
+                Submit Request to Alex
             </button>
         </form>
-        
-        <p id="successMsg" class="hidden mt-6 text-center text-green-700 font-medium">
-            Thank you! Alex is reviewing your vehicle details now.
-        </p>
+
+        <div id="successState" class="hidden p-12 text-center">
+            <div class="text-5xl mb-4">✅</div>
+            <h2 class="text-2xl font-bold mb-2">Request Received</h2>
+            <p class="text-gray-500">Alex is reviewing your vehicle data and will respond shortly via your preferred contact method.</p>
+        </div>
     </div>
 
-    <script type="text/javascript">
-      function identify(e){
-        e.preventDefault();
-        var form = e.target;
-        var email = form["email"].value;
-        var fullname = form["fullname"].value;
-        var vehicle = form["vehicle"].value;
-        var details = form["details"].value;
+    <script>
+        // Track Event 1 & 2: Tier Interaction
+        function selectTier(name, price) {
+            analytics.track('Service Tier Selected', {
+                plan_name: name,
+                price: price
+            });
+            alert("You've selected the " + name + " plan. Please complete the form below.");
+        }
 
-        // 1. Identify: Link the session to a unique user profile using Email as ID
-        analytics.identify(email, {
-            name: fullname,
-            email: email,
-            vehicleModel: vehicle
-        });
+        // Track Event 3: Field-level intent
+        function trackInput(eventName) {
+            analytics.track(eventName);
+        }
 
-        // 2. Track: Record the service request event
-        analytics.track('Service Request Submitted', {
-            vehicle: vehicle,
-            service_notes: details
-        }, function() {
-            // UI Feedback
-            form.classList.add('opacity-50', 'pointer-events-none');
-            document.getElementById('successMsg').classList.remove('hidden');
-            alert("Request received! Alex will follow up shortly.");
-        });
-      }
+        function handleIntake(e) {
+            e.preventDefault();
+            const form = e.target;
+            const email = form.email.value;
+            const name = form.fullname.value;
+            const vehicle = form.vehicle.value;
+            const details = form.details.value;
+
+            // Track Event 4: Identify (Critical for Virtual Agent memory)
+            analytics.identify(email, {
+                name: name,
+                email: email,
+                last_vehicle: vehicle
+            });
+
+            // Track Event 5: Final Submission
+            analytics.track('Service Request Submitted', {
+                vehicle: vehicle,
+                concern: details,
+                submission_date: new Date().toISOString()
+            }, function() {
+                document.getElementById('serviceForm').classList.add('hidden');
+                document.getElementById('successState').classList.remove('hidden');
+            });
+        }
     </script>
 </body>
 </html>
