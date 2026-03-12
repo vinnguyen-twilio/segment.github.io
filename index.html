@@ -1,60 +1,101 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Home Questionnaire</title> 
-</head> 
-<body> 
-<h1>What is your favorite place to travel?</h1> 
-<p>I am building a directory of the sweetest travel destinations.</p>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+    <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
+    <script>
+        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+        window.amplitude.init('95a9bbd3615d3e2f9169aae58008a2d4', {"autocapture":{"elementInteractions":true}});
+    </script>
 
-<form name="travel" onsubmit="identify(event)">
-    What is your favorite travel destination?
-    <input name="destination" required="" size="81" type="text" onblur="trackDestination(this.value)"/> 
-    <br><br>
-    Any recommendations (cool things to do, places to visit or restaurants to eat)? 
-    <br><br> 
-    <textarea cols="81" name="details" required="" rows="10"></textarea> 
-    <br><br> 
-    Name: <input name="fullname" required="" size="75" type="text"/> 
-    <br><br> 
-    Email: <input name="email" required="" size="75" type="email"/> 
-    <br><br>
-    <input name="submit" type="submit" value="Submit Destination"/>
-</form> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0P0B29DDD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-L0P0B29DDD');
+    </script>
 
-<script type="text/javascript">
-  // Track when a user finishes typing a destination
-  function trackDestination(value) {
-    if(value) {
-      analytics.track('Destination Entered', { destination: value });
-    }
-  }
+    <title>Luxury Auto Service Portal</title>
 
-  function identify(e){
-    e.preventDefault();
-    var form = e.target;
-    var email = form["email"].value;
-    var fullname = form["fullname"].value;
-    var destination = form["destination"].value;
-    var details = form["details"].value;
+    <script>
+        !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";analytics.SNIPPET_VERSION="5.2.0";
+        analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
+        analytics.page();
+        }}();
+    </script>
 
-    // FIX: Use the email as the Unique ID instead of '1234'
-    analytics.identify(email, {
-        email: email, 
-        name: fullname,
-        favorite_destination: destination
-    });
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+    <div class="max-w-2xl mx-auto py-12 px-4">
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl font-bold text-slate-800">Elite Automotive Service Advisor</h1>
+            <p class="text-slate-600 mt-2">Connect with our virtual coordinator, Alex, to manage your vehicle's maintenance.</p>
+        </header>
 
-    // Track the final submission
-    analytics.track('Destination Submitted', {
-        destination: destination, 
-        recommendations: details
-    }, function() {
-        // Provide feedback and refresh
-        alert("Thank you, " + fullname + "! Your destination has been added.");
-        window.location.reload();
-    });
-  }
-</script>
-</body> 
+        <form name="serviceRequest" onsubmit="identify(event)" class="bg-white shadow-sm border border-slate-200 rounded-lg p-8 space-y-6">
+            <div>
+                <label class="block text-sm font-semibold mb-2">Vehicle Year, Make, & Model</label>
+                <input name="vehicle" required class="w-full border border-slate-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" type="text" placeholder="e.g., 2023 Porsche 911" onblur="analytics.track('Vehicle Entered', { vehicle: this.value })"/>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-2">Service Details or Symptoms</label>
+                <textarea name="details" required class="w-full border border-slate-300 p-3 rounded-md h-32 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Describe what your vehicle needs..."></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Full Name</label>
+                    <input name="fullname" required class="w-full border border-slate-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" type="text" placeholder="Jane Doe"/>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Email Address</label>
+                    <input name="email" required class="w-full border border-slate-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" type="email" placeholder="jane@example.com" onfocus="analytics.track('User Focused on Email Field')"/>
+                </div>
+            </div>
+
+            <button name="submit" type="submit" class="w-full bg-slate-900 text-white font-bold py-3 px-6 rounded-md hover:bg-slate-800 transition-colors">
+                Submit to Alex
+            </button>
+        </form>
+        
+        <p id="successMsg" class="hidden mt-6 text-center text-green-700 font-medium">
+            Thank you! Alex is reviewing your vehicle details now.
+        </p>
+    </div>
+
+    <script type="text/javascript">
+      function identify(e){
+        e.preventDefault();
+        var form = e.target;
+        var email = form["email"].value;
+        var fullname = form["fullname"].value;
+        var vehicle = form["vehicle"].value;
+        var details = form["details"].value;
+
+        // 1. Identify: Link the session to a unique user profile using Email as ID
+        analytics.identify(email, {
+            name: fullname,
+            email: email,
+            vehicleModel: vehicle
+        });
+
+        // 2. Track: Record the service request event
+        analytics.track('Service Request Submitted', {
+            vehicle: vehicle,
+            service_notes: details
+        }, function() {
+            // UI Feedback
+            form.classList.add('opacity-50', 'pointer-events-none');
+            document.getElementById('successMsg').classList.remove('hidden');
+            alert("Request received! Alex will follow up shortly.");
+        });
+      }
+    </script>
+</body>
 </html>
