@@ -2,45 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Elite Auto Service | Advisor Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Auto | Private Client Portal</title>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+
     <script>
         !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";
         analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
         analytics.page();
         }();
     </script>
-    <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; padding: 40px; text-align: center; }
-        .container { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 20px; border: 1px solid #334155; }
-        input, select, textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: #2563eb; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .success { display: none; color: #4ade80; font-weight: bold; margin-top: 20px; }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Elite Auto Portal</h1>
-        <p>Advisor: <strong>Vincent Nguyen</strong></p>
-        <form id="intake" onsubmit="handle(event)">
-            <select name="year" required><option value="">Year</option><option>2025</option><option>2024</option></select>
-            <select name="make" required><option value="">Make</option><option>Porsche</option><option>BMW</option></select>
-            <input name="trim" required placeholder="Model/Trim (e.g. 911)">
-            <textarea name="notes" required placeholder="Service notes..."></textarea>
-            <input name="name" required placeholder="Full Name">
-            <input name="email" required type="email" placeholder="Email Address">
-            <button type="submit">Submit to Advisor</button>
+<body class="bg-[#0f172a] text-slate-200 font-sans p-4 md:p-12">
+
+    <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden">
+        <div class="bg-blue-600 p-6 text-center">
+            <h1 class="text-xl font-black uppercase tracking-widest text-white">Elite Auto Service Intake</h1>
+            <p class="text-blue-100 text-sm">Advisor: Vincent Nguyen</p>
+        </div>
+
+        <form id="proIntake" onsubmit="handleFinalSubmit(event)" class="p-8 md:p-12 space-y-8">
+            
+            <div class="space-y-4">
+                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">1. Vehicle Specification</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <option value="">Year</option>
+                        <option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option>
+                    </select>
+                    <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <option value="">Make</option>
+                        <option value="porsche">Porsche</option><option value="bmw">BMW</option><option value="tesla">Tesla</option><option value="audi">Audi</option>
+                    </select>
+                    <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <option value="">Model / Trim</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">2. Client Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input id="fName" required placeholder="First Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="mName" placeholder="Middle" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input id="phone" required type="tel" placeholder="Phone Number (e.g. 555-0123)" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="email" required type="email" placeholder="Personal Email" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">3. Service Location</h2>
+                <input id="addressSearch" placeholder="Start typing your street address..." class="w-full bg-slate-800 border-2 border-blue-500/20 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition-all">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <input id="street" readonly placeholder="Street" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
+                    <input id="city" readonly placeholder="City" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
+                    <input id="state" readonly placeholder="State" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
+                    <input id="zip" readonly placeholder="Zip" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl shadow-blue-900/40">
+                Authorize Intake Request
+            </button>
         </form>
-        <div id="status" class="success">Request Sent! Alex is reviewing your data.</div>
+
+        <div id="successCard" class="hidden p-20 text-center space-y-4">
+            <div class="text-6xl">🏁</div>
+            <h2 class="text-3xl font-black text-white">Request Dispatched</h2>
+            <p class="text-slate-400">Alex has received your diagnostic profile and will reach out shortly.</p>
+        </div>
     </div>
+
     <script>
-        function handle(e) {
+        // 1. Vehicle Logic
+        const models = {
+            porsche: ["911 Carrera", "911 GT3", "Taycan Turbo", "Cayenne GTS", "Macan S"],
+            bmw: ["M3 Competition", "M5 CS", "X5 M", "i7 xDrive60", "Z4 M40i"],
+            tesla: ["Model S Plaid", "Model 3 Performance", "Model X Plaid", "Model Y Performance"],
+            audi: ["RS e-tron GT", "RS6 Avant", "R8 V10", "Q8 Sportback"]
+        };
+
+        function updateModels() {
+            const make = document.getElementById('vMake').value;
+            const modelSelect = document.getElementById('vModel');
+            modelSelect.innerHTML = '<option value="">Model / Trim</option>';
+            if(make && models[make]) {
+                models[make].forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m; opt.textContent = m;
+                    modelSelect.appendChild(opt);
+                });
+            }
+        }
+
+        // 2. Google Maps Autocomplete Logic
+        function initAutocomplete() {
+            const input = document.getElementById('addressSearch');
+            const autocomplete = new google.maps.places.Autocomplete(input, {
+                types: ['address'],
+                componentRestrictions: { country: 'us' },
+                fields: ['address_components', 'formatted_address']
+            });
+
+            autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
+                let addressData = { street: '', city: '', state: '', zip: '' };
+
+                place.address_components.forEach(c => {
+                    const type = c.types[0];
+                    if (type === 'street_number') addressData.street = c.long_name + ' ' + addressData.street;
+                    if (type === 'route') addressData.street += c.long_name;
+                    if (type === 'locality') addressData.city = c.long_name;
+                    if (type === 'administrative_area_level_1') addressData.state = c.short_name;
+                    if (type === 'postal_code') addressData.zip = c.long_name;
+                });
+
+                document.getElementById('street').value = addressData.street;
+                document.getElementById('city').value = addressData.city;
+                document.getElementById('state').value = addressData.state;
+                document.getElementById('zip').value = addressData.zip;
+                
+                analytics.track('Address Autocompleted', addressData);
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+        // 3. Segment Submission Logic
+        function handleFinalSubmit(e) {
             e.preventDefault();
-            const f = e.target;
-            const vehicle = f.year.value + " " + f.make.value + " " + f.trim.value;
-            analytics.identify(f.email.value, { name: f.name.value, email: f.email.value });
-            analytics.track('Service Requested', { vehicle: vehicle, notes: f.notes.value }, function() {
-                document.getElementById('intake').style.display = 'none';
-                document.getElementById('status').style.display = 'block';
+            const email = document.getElementById('email').value;
+            
+            const traits = {
+                firstName: document.getElementById('fName').value,
+                middleName: document.getElementById('mName').value,
+                lastName: document.getElementById('lName').value,
+                phone: document.getElementById('phone').value,
+                email: email,
+                address: {
+                    street: document.getElementById('street').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    zip: document.getElementById('zip').value
+                },
+                vehicle: {
+                    year: document.getElementById('vYear').value,
+                    make: document.getElementById('vMake').value,
+                    model: document.getElementById('vModel').value
+                }
+            };
+
+            // Identify user in Segment
+            analytics.identify(email, traits);
+
+            // Track final conversion
+            analytics.track('Service Intake Authorized', traits, function() {
+                document.getElementById('proIntake').classList.add('hidden');
+                document.getElementById('successCard').classList.remove('hidden');
             });
         }
     </script>
