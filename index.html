@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Auto | Private Client Portal</title>
+    <title>Elite Auto | The Chaotic Service Portal</title>
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
-
     <script>
         !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";
         analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
@@ -18,23 +16,27 @@
 <body class="bg-[#0f172a] text-slate-200 font-sans p-4 md:p-12">
 
     <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden">
-        <div class="bg-blue-600 p-6 text-center">
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-center">
             <h1 class="text-xl font-black uppercase tracking-widest text-white">Elite Auto Service Intake</h1>
-            <p class="text-blue-100 text-sm">Advisor: Vincent Nguyen</p>
+            <p class="text-blue-100 text-sm mt-1">Your Advisor: <span id="advisorDisplay" class="font-bold underline">Loading chaos...</span></p>
         </div>
 
         <form id="proIntake" onsubmit="handleFinalSubmit(event)" class="p-8 md:p-12 space-y-8">
             
             <div class="space-y-4">
-                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">1. Vehicle Specification</h2>
+                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">1. Vehicle Specification (Since 1995)</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                         <option value="">Year</option>
-                        <option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option>
                     </select>
                     <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                         <option value="">Make</option>
-                        <option value="porsche">Porsche</option><option value="bmw">BMW</option><option value="tesla">Tesla</option><option value="audi">Audi</option>
+                        <option value="toyota">Toyota</option>
+                        <option value="honda">Honda</option>
+                        <option value="nissan">Nissan</option>
+                        <option value="ford">Ford</option>
+                        <option value="porsche">Porsche</option>
+                        <option value="bmw">BMW</option>
                     </select>
                     <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                         <option value="">Model / Trim</option>
@@ -46,45 +48,68 @@
                 <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">2. Client Information</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input id="fName" required placeholder="First Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
-                    <input id="mName" placeholder="Middle" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="mName" placeholder="Middle Name (or Alias)" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                     <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input id="phone" required type="tel" placeholder="Phone Number (e.g. 555-0123)" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
-                    <input id="email" required type="email" placeholder="Personal Email" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="phone" required type="tel" placeholder="Phone Number" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="email" required type="email" placeholder="Email Address" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                 </div>
             </div>
 
             <div class="space-y-4">
                 <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter">3. Service Location</h2>
-                <input id="addressSearch" placeholder="Start typing your street address..." class="w-full bg-slate-800 border-2 border-blue-500/20 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition-all">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <input id="street" readonly placeholder="Street" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
-                    <input id="city" readonly placeholder="City" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
-                    <input id="state" readonly placeholder="State" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
-                    <input id="zip" readonly placeholder="Zip" class="bg-slate-900 border border-slate-800 p-3 rounded-lg text-slate-500 text-sm italic outline-none">
+                <input id="street" required placeholder="Street Address" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input id="city" required placeholder="City" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none focus:border-blue-500">
+                    <input id="state" required placeholder="State (e.g. ID)" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none focus:border-blue-500">
+                    <input id="zip" required placeholder="Zip Code" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none focus:border-blue-500">
                 </div>
             </div>
 
             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl shadow-blue-900/40">
-                Authorize Intake Request
+                Send to the Chaos Portal
             </button>
         </form>
 
         <div id="successCard" class="hidden p-20 text-center space-y-4">
-            <div class="text-6xl">🏁</div>
-            <h2 class="text-3xl font-black text-white">Request Dispatched</h2>
-            <p class="text-slate-400">Alex has received your diagnostic profile and will reach out shortly.</p>
+            <div class="text-6xl">🏎️💨</div>
+            <h2 class="text-3xl font-black text-white">Intake Dispatched!</h2>
+            <p id="funnyFollowUp" class="text-slate-400 font-italic"></p>
         </div>
     </div>
 
     <script>
-        // 1. Vehicle Logic
+        // 1. Funny Advisor Engine
+        const advisors = [
+            { name: "Sir Shiftington of Gearbox", quote: "I shall treat your oil like liquid gold." },
+            { name: "The Check Engine Light Whisperer", quote: "Your car told me its secrets. It's not good." },
+            { name: "Spark Plug Sally", quote: "Let's give this engine some personality!" },
+            { name: "Lugnut Larry", quote: "I promise I'll only have three leftover screws this time." },
+            { name: "Turbo Timmy", quote: "Why go fast when you can go 'Whoosh'?" },
+            { name: "Brake Pad Brad", quote: "Stopping is just a suggestion, but I'll help you anyway." }
+        ];
+
+        const randomAdvisor = advisors[Math.floor(Math.random() * advisors.length)];
+        document.getElementById('advisorDisplay').innerText = randomAdvisor.name;
+        document.getElementById('funnyFollowUp').innerText = `${randomAdvisor.name} says: "${randomAdvisor.quote}"`;
+
+        // 2. Year Dropdown (1995 - 2026)
+        const yearSelect = document.getElementById('vYear');
+        for (let year = 2026; year >= 1995; year--) {
+            let opt = document.createElement('option');
+            opt.value = year; opt.textContent = year;
+            yearSelect.appendChild(opt);
+        }
+
+        // 3. Vehicle Database
         const models = {
+            toyota: ["Camry XSE", "Corolla GR", "RAV4 Prime", "Supra (A80)", "Tacoma TRD Pro", "4Runner SR5"],
+            honda: ["Civic Type R", "Accord Hybrid", "CR-V EX-L", "NSX (Classic)", "Odyssey (Soccer Pro)"],
+            nissan: ["GT-R Nismo", "Z Performance", "Altima SR", "Skyline R34", "Frontier Pro-4X"],
+            ford: ["F-150 Raptor", "Mustang GT", "Explorer ST", "Bronco Badlands", "Crown Vic (Police Interceptor)"],
             porsche: ["911 Carrera", "911 GT3", "Taycan Turbo", "Cayenne GTS", "Macan S"],
-            bmw: ["M3 Competition", "M5 CS", "X5 M", "i7 xDrive60", "Z4 M40i"],
-            tesla: ["Model S Plaid", "Model 3 Performance", "Model X Plaid", "Model Y Performance"],
-            audi: ["RS e-tron GT", "RS6 Avant", "R8 V10", "Q8 Sportback"]
+            bmw: ["M3 Competition", "M5 CS", "X5 M", "i7 xDrive60", "Z4 M40i"]
         };
 
         function updateModels() {
@@ -93,46 +118,14 @@
             modelSelect.innerHTML = '<option value="">Model / Trim</option>';
             if(make && models[make]) {
                 models[make].forEach(m => {
-                    const opt = document.createElement('option');
+                    let opt = document.createElement('option');
                     opt.value = m; opt.textContent = m;
                     modelSelect.appendChild(opt);
                 });
             }
         }
 
-        // 2. Google Maps Autocomplete Logic
-        function initAutocomplete() {
-            const input = document.getElementById('addressSearch');
-            const autocomplete = new google.maps.places.Autocomplete(input, {
-                types: ['address'],
-                componentRestrictions: { country: 'us' },
-                fields: ['address_components', 'formatted_address']
-            });
-
-            autocomplete.addListener('place_changed', () => {
-                const place = autocomplete.getPlace();
-                let addressData = { street: '', city: '', state: '', zip: '' };
-
-                place.address_components.forEach(c => {
-                    const type = c.types[0];
-                    if (type === 'street_number') addressData.street = c.long_name + ' ' + addressData.street;
-                    if (type === 'route') addressData.street += c.long_name;
-                    if (type === 'locality') addressData.city = c.long_name;
-                    if (type === 'administrative_area_level_1') addressData.state = c.short_name;
-                    if (type === 'postal_code') addressData.zip = c.long_name;
-                });
-
-                document.getElementById('street').value = addressData.street;
-                document.getElementById('city').value = addressData.city;
-                document.getElementById('state').value = addressData.state;
-                document.getElementById('zip').value = addressData.zip;
-                
-                analytics.track('Address Autocompleted', addressData);
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initAutocomplete);
-
-        // 3. Segment Submission Logic
+        // 4. Segment Submission Logic
         function handleFinalSubmit(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
@@ -153,14 +146,12 @@
                     year: document.getElementById('vYear').value,
                     make: document.getElementById('vMake').value,
                     model: document.getElementById('vModel').value
-                }
+                },
+                assigned_advisor: randomAdvisor.name
             };
 
-            // Identify user in Segment
             analytics.identify(email, traits);
-
-            // Track final conversion
-            analytics.track('Service Intake Authorized', traits, function() {
+            analytics.track('Service Intake Authorized by ' + randomAdvisor.name, traits, function() {
                 document.getElementById('proIntake').classList.add('hidden');
                 document.getElementById('successCard').classList.remove('hidden');
             });
