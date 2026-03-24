@@ -5,16 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Auto | Private Client Service Portal</title>
     
+    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+    <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
     <script>
-        !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");analytics.page();
+        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+        window.amplitude.init('95a9bbd3615d3e2f9169aae58008a2d4', {"autocapture":{"elementInteractions":true}});
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0P0B29DDD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-L0P0B29DDD');
+    </script>
+
+    <script>
+        !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";
+        analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
+        analytics.page();
         }();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .gradient-text { background: linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .service-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .selected-tier { border-color: #3b82f6 !important; box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2); transform: translateY(-4px); }
-    </script>
+    </style>
 </head>
 <body class="bg-[#0f172a] text-slate-200 font-sans selection:bg-blue-500/30">
 
@@ -23,151 +39,62 @@
             <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">E</div>
             <span class="text-xl font-black tracking-tighter uppercase text-white">Elite Auto</span>
         </div>
-        <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-400">
-            <a href="#services" class="hover:text-blue-400 transition" onclick="analytics.track('Nav Clicked', { link: 'Services' })">Services</a>
-            <a href="#advisor" class="hover:text-blue-400 transition" onclick="analytics.track('Nav Clicked', { link: 'Advisor' })">Your Advisor</a>
-            <a href="#portal" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition">Request Service</a>
-        </div>
+        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Advisor: <span id="advisorDisplay" class="text-blue-400">Vincent Nguyen</span></p>
     </nav>
 
-    <header class="relative pt-24 pb-20 px-4 overflow-hidden">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4 border border-blue-500/20">Certified Master Technicians</span>
-            <h1 class="text-6xl md:text-7xl font-black text-white mb-6 tracking-tight">Precision Care for <span class="gradient-text">Elite Machines.</span></h1>
-            <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">Experience bespoke automotive maintenance tailored to your driving profile. Managed by your dedicated concierge.</p>
-        </div>
+    <header class="relative pt-20 pb-12 px-4 text-center">
+        <h1 class="text-5xl font-black text-white mb-4 tracking-tight">Luxury Service <span class="gradient-text">Redefined.</span></h1>
+        <p class="text-slate-400 max-w-xl mx-auto">Select a preferred maintenance tier to begin your personalized intake.</p>
     </header>
 
-    <section id="advisor" class="max-w-5xl mx-auto mb-20 px-4">
-        <div class="bg-slate-800/40 border border-slate-700 rounded-3xl p-8 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
-            <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-4xl shadow-xl">👨‍💼</div>
-            <div class="flex-1 text-center md:text-left">
-                <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-1">Assigned Advisor</h3>
-                <h2 id="advisorName" class="text-3xl font-bold text-white mb-2">Vincent Nguyen</h2>
-                <p class="text-slate-400 italic">"My goal is to ensure your vehicle performs at its peak potential. Let's build your custom service plan today."</p>
-            </div>
-            <div class="flex space-x-2">
-                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Available Now</span>
-            </div>
-        </div>
+    <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 mb-16">
+        <button id="card-Express" onclick="selectTier('Express', 185)" class="text-left bg-slate-800/50 border-2 border-slate-700 p-6 rounded-2xl hover:border-slate-500 transition">
+            <h3 class="font-bold text-white">Express Care</h3>
+            <p class="text-2xl font-black mt-2">$185</p>
+        </button>
+        <button id="card-Executive" onclick="selectTier('Executive', 450)" class="text-left bg-slate-800/50 border-2 border-blue-600 p-6 rounded-2xl selected-tier transition">
+            <h3 class="font-bold text-white">Executive Plan</h3>
+            <p class="text-2xl font-black mt-2">$450</p>
+        </button>
+        <button id="card-Performance" onclick="selectTier('Performance', 890)" class="text-left bg-slate-800/50 border-2 border-slate-700 p-6 rounded-2xl hover:border-slate-500 transition">
+            <h3 class="font-bold text-white">Performance Plus</h3>
+            <p class="text-2xl font-black mt-2">$890</p>
+        </button>
     </section>
 
-    <section id="services" class="max-w-6xl mx-auto px-4 mb-20">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-white mb-2">Select Your Tier</h2>
-            <p class="text-slate-400">Choose a package to populate advisor recommendations.</p>
+    <div class="max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden mb-20 shadow-2xl">
+        <form id="intakeForm" onsubmit="handleIntake(event)" class="p-10 space-y-6">
+            <div class="grid grid-cols-3 gap-4">
+                <select name="v_year" required class="bg-slate-800 border border-slate-700 p-3 rounded-xl text-white outline-none">
+                    <option value="">Year</option><option>2025</option><option>2024</option><option>2023</option>
+                </select>
+                <select name="v_make" required class="bg-slate-800 border border-slate-700 p-3 rounded-xl text-white outline-none">
+                    <option value="">Make</option><option>Porsche</option><option>BMW</option><option>Tesla</option>
+                </select>
+                <input name="v_trim" required placeholder="Trim" class="bg-slate-800 border border-slate-700 p-3 rounded-xl text-white outline-none">
+            </div>
+            <textarea name="details" required placeholder="Service notes..." class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white h-32 outline-none focus:border-blue-500"></textarea>
+            <div class="grid grid-cols-2 gap-4">
+                <input name="fullname" required placeholder="Full Name" class="bg-slate-800 border border-slate-700 p-3 rounded-xl text-white outline-none">
+                <input name="email" required type="email" placeholder="Email" class="bg-slate-800 border border-slate-700 p-3 rounded-xl text-white outline-none">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20">Authorize Request</button>
+        </form>
+        <div id="success" class="hidden p-20 text-center">
+            <h2 class="text-3xl font-bold text-white mb-2">Request Confirmed</h2>
+            <p class="text-slate-400">Your advisor will contact you shortly.</p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div id="card-Express" onclick="selectTier('Express', 185)" class="service-card group cursor-pointer bg-slate-800/50 border-2 border-slate-700 p-8 rounded-3xl hover:bg-slate-800/80 transition">
-                <div class="text-slate-500 group-hover:text-blue-400 mb-4 transition">⚡</div>
-                <h3 class="text-xl font-bold text-white mb-2">Express Care</h3>
-                <p class="text-sm text-slate-400 mb-6">High-speed maintenance for modern lifestyles. Oil, filter, and multi-point check.</p>
-                <div class="text-3xl font-black text-white">$185</div>
-            </div>
-            <div id="card-Executive" onclick="selectTier('Executive', 450)" class="service-card group cursor-pointer bg-slate-800/50 border-2 border-blue-600 p-8 rounded-3xl hover:bg-slate-800/80 transition selected-tier">
-                <div class="text-blue-500 mb-4">💎</div>
-                <h3 class="text-xl font-bold text-white mb-2">Executive Plan</h3>
-                <p class="text-sm text-slate-400 mb-6">Comprehensive system flush, calibration, and premium cabin conditioning.</p>
-                <div class="text-3xl font-black text-white">$450</div>
-            </div>
-            <div id="card-Performance" onclick="selectTier('Performance', 890)" class="service-card group cursor-pointer bg-slate-800/50 border-2 border-slate-700 p-8 rounded-3xl hover:bg-slate-800/80 transition">
-                <div class="text-slate-500 group-hover:text-purple-400 mb-4 transition">🏎️</div>
-                <h3 class="text-xl font-bold text-white mb-2">Performance Plus</h3>
-                <p class="text-sm text-slate-400 mb-6">Full diagnostic overhaul, spark performance, and brake optimization.</p>
-                <div class="text-3xl font-black text-white">$890</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portal" class="max-w-3xl mx-auto px-4 pb-32">
-        <div class="bg-slate-900 border border-slate-800 rounded-[2rem] shadow-2xl overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 py-4 px-10">
-                <h2 class="text-sm font-black uppercase tracking-[0.3em] text-white">Intake Authorization</h2>
-            </div>
-            
-            <form id="intakeForm" onsubmit="handleIntake(event)" class="p-10 space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Model Year</label>
-                        <select name="v_year" required class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition">
-                            <option value="">Year</option>
-                            <option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option>
-                        </select>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Manufacturer</label>
-                        <select name="v_make" required class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition">
-                            <option value="">Make</option>
-                            <option>Porsche</option><option>BMW</option><option>Mercedes</option><option>Audi</option><option>Tesla</option>
-                        </select>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Trim / Spec</label>
-                        <input name="v_trim" required placeholder="e.g. 911 GT3" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition" onfocus="analytics.track('Form Started')">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Vehicle Health Notes</label>
-                    <textarea name="details" required placeholder="Describe any specific performance issues or requests..." class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white h-32 outline-none focus:border-blue-500 transition"></textarea>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Owner Name</label>
-                        <input name="fullname" required placeholder="Vincent Nguyen" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Owner Email</label>
-                        <input name="email" required type="email" placeholder="vincent@example.com" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500 transition">
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl transition shadow-xl shadow-blue-900/40">
-                    Finalize Service Request
-                </button>
-            </form>
-
-            <div id="success" class="hidden p-20 text-center">
-                <div class="text-6xl mb-6">🛡️</div>
-                <h2 class="text-3xl font-black text-white mb-2">Intake Confirmed</h2>
-                <p class="text-slate-400">Alex has received your data and is preparing your service bay.</p>
-                <button onclick="location.reload()" class="mt-8 text-blue-400 font-bold uppercase tracking-widest text-xs">Submit New Request</button>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        // CHANGE YOUR ADVISOR NAME HERE
-        const CURRENT_ADVISOR = "Vincent Nguyen"; 
-        let selectedTier = "Executive";
-
-        // Segment Track: Scroll depth tracking
-        window.onscroll = function() {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                analytics.track('Scrolled to Bottom');
-            }
-        };
+        const ADVISOR = "Vincent Nguyen";
+        let currentTier = "Executive";
 
         function selectTier(tier, price) {
-            selectedTier = tier;
-            // 1. Visual update (moving the blue bar/border)
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.classList.remove('selected-tier', 'border-blue-600');
-                card.classList.add('border-slate-700');
-            });
-            const activeCard = document.getElementById('card-' + tier);
-            activeCard.classList.add('selected-tier', 'border-blue-600');
-            activeCard.classList.remove('border-slate-700');
-
-            // 2. Segment Track
-            analytics.track('Service Tier Interaction', {
-                tier_name: tier,
-                tier_price: price,
-                advisor: CURRENT_ADVISOR
-            });
+            currentTier = tier;
+            document.querySelectorAll('button[id^="card-"]').forEach(btn => btn.classList.remove('selected-tier', 'border-blue-600'));
+            document.getElementById('card-' + tier).classList.add('selected-tier', 'border-blue-600');
+            analytics.track('Tier Selected', { tier, price, advisor: ADVISOR });
         }
 
         function handleIntake(e) {
@@ -175,21 +102,8 @@
             const f = e.target;
             const vehicle = `${f.v_year.value} ${f.v_make.value} ${f.v_trim.value}`;
 
-            // Segment Identify
-            analytics.identify(f.email.value, {
-                name: f.fullname.value,
-                email: f.email.value,
-                vehicle_on_file: vehicle,
-                assigned_advisor: CURRENT_ADVISOR
-            });
-
-            // Segment Track
-            analytics.track('Service Authorized', {
-                vehicle_details: vehicle,
-                selected_tier: selectedTier,
-                advisor_at_submission: CURRENT_ADVISOR,
-                notes: f.details.value
-            }, function() {
+            analytics.identify(f.email.value, { name: f.fullname.value, email: f.email.value, advisor: ADVISOR });
+            analytics.track('Service Authorized', { vehicle, notes: f.details.value, tier: currentTier }, function() {
                 document.getElementById('intakeForm').classList.add('hidden');
                 document.getElementById('success').classList.remove('hidden');
             });
