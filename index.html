@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";;analytics.SNIPPET_VERSION="5.2.0";
-  analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
-  analytics.page();
-  }}();
-</script>
+        <script>
+        !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";
+        analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
+        analytics.page();
+        }();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Auto | The Chaotic Service Portal</title>
@@ -23,19 +23,14 @@
         <form id="proIntake" onsubmit="handleFinalSubmit(event)" class="p-8 md:p-12 space-y-8">
             
             <div class="space-y-4">
-                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">1. Vehicle Specification (Since 1995)</h2>
+                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">1. Vehicle Specification</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                         <option value="">Year</option>
                     </select>
                     <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                         <option value="">Make</option>
-                        <option value="toyota">Toyota</option>
-                        <option value="honda">Honda</option>
-                        <option value="nissan">Nissan</option>
-                        <option value="ford">Ford</option>
-                        <option value="porsche">Porsche</option>
-                        <option value="bmw">BMW</option>
+                        <option value="toyota">Toyota</option><option value="honda">Honda</option><option value="nissan">Nissan</option><option value="ford">Ford</option><option value="porsche">Porsche</option><option value="bmw">BMW</option>
                     </select>
                     <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                         <option value="">Model / Trim</option>
@@ -50,17 +45,13 @@
                     <optgroup label="Standard Maintenance">
                         <option value="Oil Change">Boring Oil Change</option>
                         <option value="Brake Service">Squeaky Brake Silence</option>
-                        <option value="Tire Rotation">Tire Musical Chairs</option>
                     </optgroup>
                     <optgroup label="Chaotic Advisor Specials">
                         <option value="Spark Plug Fire Show">Spark Plug Fire Show 🎆</option>
                         <option value="Muffler Upgrade">Muffler Megaphone Upgrade 📣</option>
-                        <option value="Engine Light Exorcism">Check Engine Light Exorcism 🕯️</option>
                         <option value="Blinker Fluid Refill">Premium Blinker Fluid Refill 💧</option>
-                        <option value="Turbo Whistle Install">Turbo Whistle Installation 🌬️</option>
                     </optgroup>
                 </select>
-                <textarea id="details" placeholder="Any additional symptoms or chaotic details?" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white h-24 outline-none focus:border-blue-500"></textarea>
             </div>
 
             <div class="space-y-4">
@@ -70,50 +61,64 @@
                     <input id="mName" placeholder="Middle Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                     <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input id="phone" required type="tel" placeholder="Phone Number" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
-                    <input id="email" required type="email" placeholder="Email Address" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex">
+                        <select id="countryCode" class="bg-slate-800 border border-slate-700 p-4 rounded-l-xl text-white outline-none border-r-0">
+                            <option value="+1">+1 (USA)</option><option value="+44">+44 (UK)</option><option value="+61">+61 (AUS)</option>
+                        </select>
+                        <input id="phone" required type="tel" pattern="[0-9]{10,15}" title="Please enter at least 10 digits" placeholder="Phone" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-r-xl text-white outline-none focus:border-blue-500">
+                    </div>
+                    <input id="email" required type="email" placeholder="Email Address" class="md:col-span-2 bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                 </div>
             </div>
 
             <div class="space-y-4">
                 <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">4. Client's Address</h2>
-                <input id="street" required placeholder="Street Name" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input id="street" required placeholder="Street Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <input id="city" required placeholder="City" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <input id="city" required placeholder="City" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none focus:border-blue-500">
-                    <input id="state" required placeholder="State (e.g. ID)" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none focus:border-blue-500">
-                    <input id="zip" required placeholder="Zip Code" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none focus:border-blue-500">
+                    <select id="state" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <option value="">State</option><option>ID</option><option>CA</option><option>NY</option><option>TX</option><option>WA</option>
+                    </select>
+                    <input id="zip" required pattern="[0-9]{5}" title="5-digit zip code" placeholder="Zip Code" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                    <select id="country" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <option value="USA">USA</option><option value="Canada">Canada</option><option value="UK">UK</option>
+                    </select>
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl shadow-blue-900/40 transform hover:scale-105 active:scale-95">
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl shadow-blue-900/40">
                 Send to the Chaos Portal
             </button>
         </form>
 
-        <div id="successCard" class="hidden p-20 text-center space-y-4">
-            <div class="text-6xl">🏎️💨</div>
-            <h2 class="text-3xl font-black text-white">Intake Dispatched!</h2>
-            <p id="funnyFollowUp" class="text-slate-400 italic text-lg"></p>
+        <div id="successCard" class="hidden p-12 text-center space-y-6">
+            <h2 class="text-3xl font-black text-white italic">"DILLON! YOU SON OF A BITCH!"</h2>
+            <div class="flex justify-center">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueW9ueW56bmR6bmR6bmR6bmR6bmR6bmR6bmR6bmR6bmR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/Ke3mE4qjnU9pIVaLpI/giphy.gif" alt="Arnold Dillon Handshake" class="rounded-2xl border-4 border-blue-600 shadow-2xl max-w-full">
+            </div>
+            <p id="funnyFollowUp" class="text-slate-400 font-bold"></p>
+            <div class="pt-6 border-t border-slate-800">
+                <p class="text-sm text-slate-500 mb-4">Want to test your luck again?</p>
+                <button onclick="location.reload()" class="bg-white text-black font-black uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-slate-200 transition">
+                    Submit Another Service Request
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
-        // 1. Hilarious Advisor Generator
         const funnyAdvisors = [
             { name: "Sir Lugnut the Rusty", quote: "I promise I only have three leftover screws this time." },
             { name: "The Check Engine Light Whisperer", quote: "Your car told me its secrets. It was mostly just screaming." },
-            { name: "Count Piston of Mufflershire", quote: "Your transmission is a tragedy, but we shall make it a symphony." },
-            { name: "Spark Plug Sally", quote: "Let's give this engine some personality and fire!" },
-            { name: "Brake Pad Brad", quote: "Stopping is just a suggestion, but I'll help you anyway." },
-            { name: "Oil Slick Rick", quote: "I am 40% synthetic blend myself at this point." }
+            { name: "Count Piston of Mufflershire", quote: "Your transmission is a tragedy, but we shall make it a symphony." }
         ];
 
         const randomAdvisor = funnyAdvisors[Math.floor(Math.random() * funnyAdvisors.length)];
         document.getElementById('advisorDisplay').innerText = randomAdvisor.name;
-        document.getElementById('funnyFollowUp').innerText = `${randomAdvisor.name} says: "${randomAdvisor.quote}"`;
 
-        // 2. Year Logic (1995 - 2026)
         const yearSelect = document.getElementById('vYear');
         for (let y = 2026; y >= 1995; y--) {
             let opt = document.createElement('option');
@@ -121,14 +126,10 @@
             yearSelect.appendChild(opt);
         }
 
-        // 3. Massive Model Database
         const modelRepo = {
-            toyota: ["Supra (A80)", "Camry XSE", "Corolla GR", "Tacoma TRD Pro", "RAV4 Prime", "4Runner Limited"],
-            honda: ["NSX (Classic)", "Civic Type R", "Accord Sport", "CR-V Hybrid", "S2000", "Odyssey (Elite)"],
-            nissan: ["GT-R Nismo", "Skyline R34", "370Z", "Z Performance", "Altima SR", "Titan XD"],
-            ford: ["F-150 Raptor", "Mustang GT", "Bronco Badlands", "Explorer ST", "Crown Vic (Police)", "GT40"],
-            porsche: ["911 GT3 RS", "Taycan Turbo S", "Cayenne Turbo", "Macan GTS", "718 Cayman"],
-            bmw: ["M3 CS", "M5 Competition", "X5 M", "i7 xDrive60", "Z4 M40i", "850CSi"]
+            toyota: ["Supra", "Camry", "Tacoma"], honda: ["Civic Type R", "NSX"],
+            nissan: ["GT-R", "Z"], ford: ["Raptor", "Mustang"],
+            porsche: ["911 GT3", "Taycan"], bmw: ["M3", "M5"]
         };
 
         function updateModels() {
@@ -144,49 +145,38 @@
             }
         }
 
-        // 4. Submission Logic (Fixed for Button)
         function handleFinalSubmit(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
+            const fullPhone = document.getElementById('countryCode').value + document.getElementById('phone').value;
             
-            const clientTraits = {
+            const traits = {
                 firstName: document.getElementById('fName').value,
-                middleName: document.getElementById('mName').value,
-                lastName: document.getElementById('lName').value,
-                phone: document.getElementById('phone').value,
                 email: email,
+                phone: fullPhone,
                 address: {
-                    street: document.getElementById('street').value,
                     city: document.getElementById('city').value,
                     state: document.getElementById('state').value,
-                    zip: document.getElementById('zip').value
+                    country: document.getElementById('country').value
                 },
-                vehicle: {
-                    year: document.getElementById('vYear').value,
-                    make: document.getElementById('vMake').value,
-                    model: document.getElementById('vModel').value
-                },
-                service_requested: document.getElementById('serviceType').value,
-                chaotic_notes: document.getElementById('details').value,
                 assigned_chaos_advisor: randomAdvisor.name
             };
 
-            // Identify and then Track with a UI fallback
             if (window.analytics) {
-                analytics.identify(email, clientTraits);
-                analytics.track('Chaos Intake Authorized', clientTraits, function() {
+                analytics.identify(email, traits);
+                analytics.track('Chaos Intake Authorized', traits, function() {
                     showSuccess();
                 });
-                // Fallback in case the track callback hangs
                 setTimeout(showSuccess, 1000);
             } else {
-                showSuccess(); // Work even if Segment is blocked
+                showSuccess();
             }
         }
 
         function showSuccess() {
             document.getElementById('proIntake').classList.add('hidden');
             document.getElementById('successCard').classList.remove('hidden');
+            document.getElementById('funnyFollowUp').innerText = `${randomAdvisor.name} says: "${randomAdvisor.quote}"`;
         }
     </script>
 </body>
