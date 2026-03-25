@@ -9,7 +9,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Auto | The Chaotic Service Portal</title>
+    <title>Elite Auto | Private Client Portal</title>
     
     <script>
         !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";
@@ -20,14 +20,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .selected-tier { border-color: #3b82f6 !important; background-color: rgba(30, 41, 59, 0.8) !important; transform: translateY(-2px); }
+        select option { background: #1e293b; color: white; }
     </style>
 </head>
 <body class="bg-[#0f172a] text-slate-200 font-sans p-4 md:p-12">
 
     <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden">
-        <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-center">
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-center border-b border-slate-800">
             <h1 class="text-xl font-black uppercase tracking-widest text-white">Elite Auto Service Intake</h1>
-            <p class="text-blue-100 text-sm mt-1">Your Advisor: <span id="advisorDisplay" class="font-bold underline italic text-yellow-300">Summoning...</span></p>
+            <p class="text-blue-100 text-sm mt-1 italic">Advisor: <span id="advisorDisplay" class="font-bold underline text-yellow-300">Summoning...</span></p>
         </div>
 
         <div id="mainContent">
@@ -35,32 +36,46 @@
                 <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic mb-4">Select Service Level</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <button type="button" onclick="selectTier('Express', 185)" id="tier-Express" class="tier-card text-left bg-slate-800/40 border-2 border-slate-700 p-5 rounded-2xl transition-all hover:border-slate-500">
-                        <p class="font-bold text-white">Express</p>
+                        <p class="font-bold text-white text-xs uppercase tracking-widest">Express</p>
                         <p class="text-2xl font-black">$185</p>
                     </button>
                     <button type="button" onclick="selectTier('Executive', 450)" id="tier-Executive" class="tier-card text-left bg-slate-800/40 border-2 border-blue-600 p-5 rounded-2xl selected-tier transition-all">
-                        <p class="font-bold text-white">Executive</p>
+                        <p class="font-bold text-white text-xs uppercase tracking-widest">Executive</p>
                         <p class="text-2xl font-black">$450</p>
                     </button>
                     <button type="button" onclick="selectTier('Performance', 890)" id="tier-Performance" class="tier-card text-left bg-slate-800/40 border-2 border-slate-700 p-5 rounded-2xl transition-all hover:border-slate-500">
-                        <p class="font-bold text-white">Performance</p>
+                        <p class="font-bold text-white text-xs uppercase tracking-widest">Performance</p>
                         <p class="text-2xl font-black">$890</p>
                     </button>
                 </div>
             </div>
 
             <form id="proIntake" onsubmit="handleFinalSubmit(event)" class="p-8 md:p-12 space-y-8">
+                
                 <div class="space-y-4">
-                    <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">1. Vehicle Specification</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none"></select>
-                        <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                    <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">1. Vehicle Specification (1995-2026)</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500"></select>
+                        <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                             <option value="">Make</option>
-                            <option value="toyota">Toyota</option><option value="honda">Honda</option><option value="ford">Ford</option>
+                            <option value="toyota">Toyota</option><option value="honda">Honda</option>
+                            <option value="ford">Ford</option><option value="nissan">Nissan</option>
                             <option value="porsche">Porsche</option><option value="bmw">BMW</option>
+                            <option value="mercedes">Mercedes-Benz</option><option value="audi">Audi</option>
+                            <option value="tesla">Tesla</option>
                         </select>
-                        <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                        <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500 md:col-span-2">
                             <option value="">Model / Trim</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase font-bold text-slate-500 ml-1">Exterior Finish</label>
+                        <select id="vColor" required class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                            <option value="">Select Exterior Color</option>
+                            <option>Obsidian Black Metallic</option><option>Alpine White</option>
+                            <option>Guards Red</option><option>Shark Blue</option>
+                            <option>Quicksilver (Tesla)</option><option>British Racing Green</option>
+                            <option>Nardo Grey</option><option>Frozen Portimao Blue</option>
                         </select>
                     </div>
                 </div>
@@ -68,16 +83,16 @@
                 <div class="space-y-4">
                     <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">2. Personal Details</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <input id="fName" required placeholder="First Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                        <input id="mName" placeholder="Middle Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                        <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                        <input id="fName" required placeholder="First Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <input id="mName" placeholder="Middle Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
+                        <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="flex">
-                            <select id="countryCode" class="bg-slate-800 border border-slate-700 p-4 rounded-l-xl text-white outline-none border-r-0">
+                            <select id="countryCode" class="bg-slate-800 border border-slate-700 p-4 rounded-l-xl text-white outline-none">
                                 <option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option>
                             </select>
-                            <input id="phone" required type="tel" pattern="[0-9]{10,15}" placeholder="Phone" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-r-xl text-white outline-none focus:border-blue-500">
+                            <input id="phone" required type="tel" pattern="[0-9]{10,15}" placeholder="Phone" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-r-xl text-white outline-none">
                         </div>
                         <input id="email" required type="email" placeholder="Email Address" class="md:col-span-2 bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
                     </div>
@@ -86,28 +101,31 @@
                 <div class="space-y-4">
                     <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">3. Client's Address</h2>
                     <input id="street" required placeholder="Street Name" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <input id="city" required placeholder="City" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white">
                         <select id="state" required class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
                             <option value="">State</option><option>ID</option><option>CA</option><option>NY</option><option>TX</option>
                         </select>
-                        <input id="zip" required pattern="[0-9]{5}" placeholder="Zip Code" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white">
+                        <input id="zip" required pattern="[0-9]{5}" placeholder="Zip" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white">
+                        <select id="country" required class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
+                            <option value="USA">USA</option><option value="Canada">Canada</option>
+                        </select>
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl shadow-blue-900/40">
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl transform active:scale-95">
                     Send to the Chaos Portal
                 </button>
             </form>
         </div>
 
         <div id="successCard" class="hidden p-12 text-center space-y-6">
-            <h2 class="text-3xl font-black text-white italic">"DILLON! YOU SON OF A BITCH!"</h2>
+            <h2 class="text-3xl font-black text-white italic tracking-tighter">"DILLON! YOU SON OF A BITCH!"</h2>
             <div class="flex justify-center">
-                <iframe src="https://giphy.com/embed/Ke3mE4qjnU9pIVaLpI" width="480" height="270" frameBorder="0" class="giphy-embed rounded-2xl border-4 border-blue-600" allowFullScreen></iframe>
+                <iframe src="https://giphy.com/embed/Ke3mE4qjnU9pIVaLpI" width="480" height="270" frameBorder="0" class="giphy-embed rounded-3xl border-4 border-blue-600 shadow-2xl" allowFullScreen></iframe>
             </div>
-            <p id="funnyFollowUp" class="text-slate-400 font-bold"></p>
-            <button onclick="location.reload()" class="bg-white text-black font-black uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-slate-200 transition">
+            <p id="funnyFollowUp" class="text-slate-400 font-bold text-lg"></p>
+            <button onclick="location.reload()" class="bg-white text-black font-black uppercase tracking-widest px-10 py-5 rounded-2xl hover:bg-slate-200 transition shadow-2xl">
                 Submit Another Request
             </button>
         </div>
@@ -115,14 +133,15 @@
 
     <script>
         const funnyAdvisors = [
-            { name: "Sir Lugnut the Rusty", quote: "I promise I only have three leftover screws." },
+            { name: "Sir Lugnut the Rusty", quote: "I promise I only have three leftover screws this time." },
+            { name: "Count Piston", quote: "Your transmission is a tragedy, but we shall make it a symphony." },
             { name: "Spark Plug Sally", quote: "Let's give this engine some fire!" }
         ];
 
         const randomAdvisor = funnyAdvisors[Math.floor(Math.random() * funnyAdvisors.length)];
         document.getElementById('advisorDisplay').innerText = randomAdvisor.name;
 
-        // Initialize Years
+        // Auto-generate years 1995-2026
         const yearSelect = document.getElementById('vYear');
         yearSelect.innerHTML = '<option value="">Year</option>';
         for (let y = 2026; y >= 1995; y--) {
@@ -132,8 +151,15 @@
         }
 
         const modelRepo = {
-            toyota: ["Supra", "Camry"], honda: ["Civic", "NSX"], ford: ["Raptor", "Mustang"],
-            porsche: ["911 GT3", "Taycan"], bmw: ["M3", "M5"]
+            toyota: ["Supra (A80)", "GR Corolla", "Camry TRD", "Tacoma TRD Pro", "Land Cruiser"],
+            honda: ["NSX Type S", "Civic Type R (FL5)", "S2000 CR", "Accord 2.0T"],
+            ford: ["F-150 Raptor R", "Mustang Dark Horse", "Bronco Raptor", "GT500"],
+            nissan: ["GT-R Nismo", "Skyline GT-R (R34)", "Z Proto Spec", "Titan Pro-4X"],
+            porsche: ["911 GT3 RS", "911 Dakar", "Taycan Turbo S", "718 GT4 RS"],
+            bmw: ["M3 CS", "M5 Competition", "M4 CSL", "X5 M Label Red"],
+            mercedes: ["AMG G63", "AMG GT Black Series", "S63 E-Performance"],
+            audi: ["RS6 Avant", "RS e-tron GT", "R8 V10 Performance"],
+            tesla: ["Model S Plaid", "Model X Plaid", "Cybertruck Cyberbeast"]
         };
 
         function updateModels() {
@@ -155,7 +181,7 @@
             document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected-tier'));
             document.getElementById('tier-' + name).classList.add('selected-tier');
             if(window.analytics) {
-                analytics.track('Service Tier Interaction', { tier: name, price: price });
+                analytics.track('Tier Selected', { name, price });
             }
         }
 
@@ -166,13 +192,19 @@
                 firstName: document.getElementById('fName').value,
                 phone: document.getElementById('countryCode').value + document.getElementById('phone').value,
                 email: email,
+                vehicle: {
+                    year: document.getElementById('vYear').value,
+                    make: document.getElementById('vMake').value,
+                    model: document.getElementById('vModel').value,
+                    color: document.getElementById('vColor').value
+                },
                 tier_selected: selectedTier,
-                assigned_chaos_advisor: randomAdvisor.name
+                advisor: randomAdvisor.name
             };
 
             if (window.analytics) {
                 analytics.identify(email, traits);
-                analytics.track('Chaos Intake Authorized', traits);
+                analytics.track('Service Intake Authorized', traits);
             }
             
             document.getElementById('mainContent').classList.add('hidden');
