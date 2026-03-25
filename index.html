@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <script>
-  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";;analytics.SNIPPET_VERSION="5.2.0";
-  analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
-  analytics.page();
-  }}();
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Auto | The Chaotic Service Portal</title>
@@ -14,92 +8,101 @@
     <script>
         !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I";
         analytics.load("UQGE4OeOC5VgZ4TR6avn4S3o8Lwcnp2I");
-        analytics.page(); // This fires the Page call immediately
+        analytics.page(); 
         }();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .selected-tier { border-color: #3b82f6 !important; background-color: rgba(30, 41, 59, 0.8) !important; transform: translateY(-2px); }
+    </style>
 </head>
 <body class="bg-[#0f172a] text-slate-200 font-sans p-4 md:p-12">
 
     <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden">
         <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-center">
             <h1 class="text-xl font-black uppercase tracking-widest text-white">Elite Auto Service Intake</h1>
-            <p class="text-blue-100 text-sm mt-1">Your Advisor: <span id="advisorDisplay" class="font-bold underline italic text-yellow-300 italic">Summoning...</span></p>
+            <p class="text-blue-100 text-sm mt-1">Your Advisor: <span id="advisorDisplay" class="font-bold underline italic text-yellow-300">Summoning...</span></p>
         </div>
 
-        <form id="proIntake" onsubmit="handleFinalSubmit(event)" class="p-8 md:p-12 space-y-8">
-            
-            <div class="space-y-4">
-                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">1. Vehicle Specification (Since 1995)</h2>
+        <div id="mainContent">
+            <div class="p-8 pb-0">
+                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic mb-4">Select Service Level</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500"></select>
-                    <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
-                        <option value="">Make</option>
-                        <option value="toyota">Toyota</option><option value="honda">Honda</option><option value="nissan">Nissan</option>
-                        <option value="ford">Ford</option><option value="porsche">Porsche</option><option value="bmw">BMW</option>
-                    </select>
-                    <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
-                        <option value="">Model / Trim</option>
-                    </select>
+                    <button type="button" onclick="selectTier('Express', 185)" id="tier-Express" class="tier-card text-left bg-slate-800/40 border-2 border-slate-700 p-5 rounded-2xl transition-all hover:border-slate-500">
+                        <p class="font-bold text-white">Express</p>
+                        <p class="text-2xl font-black">$185</p>
+                    </button>
+                    <button type="button" onclick="selectTier('Executive', 450)" id="tier-Executive" class="tier-card text-left bg-slate-800/40 border-2 border-blue-600 p-5 rounded-2xl selected-tier transition-all">
+                        <p class="font-bold text-white">Executive</p>
+                        <p class="text-2xl font-black">$450</p>
+                    </button>
+                    <button type="button" onclick="selectTier('Performance', 890)" id="tier-Performance" class="tier-card text-left bg-slate-800/40 border-2 border-slate-700 p-5 rounded-2xl transition-all hover:border-slate-500">
+                        <p class="font-bold text-white">Performance</p>
+                        <p class="text-2xl font-black">$890</p>
+                    </button>
                 </div>
             </div>
 
-            <div class="space-y-4">
-                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">2. Service Required</h2>
-                <select id="serviceType" required class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none focus:border-blue-500">
-                    <option value="">Select Task...</option>
-                    <option value="Oil Change">Boring Oil Change</option>
-                    <option value="Spark Plug Fire Show">Spark Plug Fire Show 🎆</option>
-                    <option value="Blinker Fluid Refill">Premium Blinker Fluid Refill 💧</option>
-                </select>
-            </div>
-
-            <div class="space-y-4">
-                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">3. Personal Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <input id="fName" required placeholder="First Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                    <input id="mName" placeholder="Middle Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                    <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="flex">
-                        <select id="countryCode" class="bg-slate-800 border border-slate-700 p-4 rounded-l-xl text-white outline-none">
-                            <option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option>
+            <form id="proIntake" onsubmit="handleFinalSubmit(event)" class="p-8 md:p-12 space-y-8">
+                <div class="space-y-4">
+                    <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">1. Vehicle Specification</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <select id="vYear" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none"></select>
+                        <select id="vMake" required onchange="updateModels()" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                            <option value="">Make</option>
+                            <option value="toyota">Toyota</option><option value="honda">Honda</option><option value="ford">Ford</option>
+                            <option value="porsche">Porsche</option><option value="bmw">BMW</option>
                         </select>
-                        <input id="phone" required type="tel" pattern="[0-9]{10,15}" placeholder="Phone" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-r-xl text-white outline-none">
+                        <select id="vModel" required class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                            <option value="">Model / Trim</option>
+                        </select>
                     </div>
-                    <input id="email" required type="email" placeholder="Email Address" class="md:col-span-2 bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
                 </div>
-            </div>
 
-            <div class="space-y-4">
-                <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">4. Client's Address</h2>
-                <input id="street" required placeholder="Street Name" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <input id="city" required placeholder="City" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
-                    <select id="state" required class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
-                        <option value="">State</option><option>ID</option><option>CA</option><option>NY</option><option>TX</option>
-                    </select>
-                    <input id="zip" required pattern="[0-9]{5}" placeholder="Zip" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
-                    <select id="country" required class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
-                        <option value="USA">USA</option><option value="Canada">Canada</option>
-                    </select>
+                <div class="space-y-4">
+                    <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">2. Personal Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input id="fName" required placeholder="First Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                        <input id="mName" placeholder="Middle Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                        <input id="lName" required placeholder="Last Name" class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex">
+                            <select id="countryCode" class="bg-slate-800 border border-slate-700 p-4 rounded-l-xl text-white outline-none border-r-0">
+                                <option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option>
+                            </select>
+                            <input id="phone" required type="tel" pattern="[0-9]{10,15}" placeholder="Phone" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-r-xl text-white outline-none focus:border-blue-500">
+                        </div>
+                        <input id="email" required type="email" placeholder="Email Address" class="md:col-span-2 bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                    </div>
                 </div>
-            </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl">
-                Send to the Chaos Portal
-            </button>
-        </form>
+                <div class="space-y-4">
+                    <h2 class="text-blue-400 text-xs font-bold uppercase tracking-tighter italic">3. Client's Address</h2>
+                    <input id="street" required placeholder="Street Name" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input id="city" required placeholder="City" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white">
+                        <select id="state" required class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
+                            <option value="">State</option><option>ID</option><option>CA</option><option>NY</option><option>TX</option>
+                        </select>
+                        <input id="zip" required pattern="[0-9]{5}" placeholder="Zip Code" class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-white">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest py-6 rounded-2xl transition shadow-xl shadow-blue-900/40">
+                    Send to the Chaos Portal
+                </button>
+            </form>
+        </div>
 
         <div id="successCard" class="hidden p-12 text-center space-y-6">
             <h2 class="text-3xl font-black text-white italic">"DILLON! YOU SON OF A BITCH!"</h2>
             <div class="flex justify-center">
-                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueW9ueW56bmR6bmR6bmR6bmR6bmR6bmR6bmR6bmR6bmR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/Ke3mE4qjnU9pIVaLpI/giphy.gif" alt="Arnold Dillon Handshake" class="rounded-2xl border-4 border-blue-600 shadow-2xl max-w-full">
+                <iframe src="https://giphy.com/embed/Ke3mE4qjnU9pIVaLpI" width="480" height="270" frameBorder="0" class="giphy-embed rounded-2xl border-4 border-blue-600" allowFullScreen></iframe>
             </div>
             <p id="funnyFollowUp" class="text-slate-400 font-bold"></p>
-            <button onclick="location.reload()" class="mt-8 bg-white text-black font-black uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-slate-200 transition">
-                Submit Another Service Request
+            <button onclick="location.reload()" class="bg-white text-black font-black uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-slate-200 transition">
+                Submit Another Request
             </button>
         </div>
     </div>
@@ -107,13 +110,13 @@
     <script>
         const funnyAdvisors = [
             { name: "Sir Lugnut the Rusty", quote: "I promise I only have three leftover screws." },
-            { name: "The Check Engine Light Whisperer", quote: "Your car told me its secrets. It was mostly just screaming." }
+            { name: "Spark Plug Sally", quote: "Let's give this engine some fire!" }
         ];
 
         const randomAdvisor = funnyAdvisors[Math.floor(Math.random() * funnyAdvisors.length)];
         document.getElementById('advisorDisplay').innerText = randomAdvisor.name;
 
-        // Year Logic
+        // Initialize Years
         const yearSelect = document.getElementById('vYear');
         yearSelect.innerHTML = '<option value="">Year</option>';
         for (let y = 2026; y >= 1995; y--) {
@@ -123,8 +126,8 @@
         }
 
         const modelRepo = {
-            toyota: ["Supra", "Camry"], honda: ["Civic", "NSX"], nissan: ["GT-R", "Z"],
-            ford: ["Raptor", "Mustang"], porsche: ["911", "Taycan"], bmw: ["M3", "M5"]
+            toyota: ["Supra", "Camry"], honda: ["Civic", "NSX"], ford: ["Raptor", "Mustang"],
+            porsche: ["911 GT3", "Taycan"], bmw: ["M3", "M5"]
         };
 
         function updateModels() {
@@ -140,6 +143,16 @@
             }
         }
 
+        let selectedTier = "Executive";
+        function selectTier(name, price) {
+            selectedTier = name;
+            document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected-tier'));
+            document.getElementById('tier-' + name).classList.add('selected-tier');
+            if(window.analytics) {
+                analytics.track('Service Tier Interaction', { tier: name, price: price });
+            }
+        }
+
         function handleFinalSubmit(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
@@ -147,6 +160,7 @@
                 firstName: document.getElementById('fName').value,
                 phone: document.getElementById('countryCode').value + document.getElementById('phone').value,
                 email: email,
+                tier_selected: selectedTier,
                 assigned_chaos_advisor: randomAdvisor.name
             };
 
@@ -155,7 +169,7 @@
                 analytics.track('Chaos Intake Authorized', traits);
             }
             
-            document.getElementById('proIntake').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('hidden');
             document.getElementById('successCard').classList.remove('hidden');
             document.getElementById('funnyFollowUp').innerText = `${randomAdvisor.name} says: "${randomAdvisor.quote}"`;
         }
